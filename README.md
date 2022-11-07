@@ -37,4 +37,9 @@ This repository includes AWS deployment by using [Terraform](https://www.terrafo
 - Go ahead `Next: Tags` and tag the role as you wish, I tagged as `Name` : `RoleEC2TF`.
 - Go ahead `Next: Review`, name it as you wish, I named as `EC2TFRole` and click on `Create role`.
 
-## Understanding Terraform `fmt`, `validate`, `plan`, and `apply`
+## Understanding Terraform `init`, `fmt`, `validate`, `plan`, and `apply`
+
+`init`
+It's the inception of all the providers, plugins, and modules that your Terraform code needs to create resources.
+And you won't be able to deploy anything without executing this command first.
+It initializes your Terraform project's working folder, and downloads the required plugins from the appropriate registry or repository. As other stages of Terraform deployment require provider, plugins, and modules, this command needs to be run first!
