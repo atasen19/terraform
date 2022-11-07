@@ -94,4 +94,12 @@ aws s3api create-bucket --bucket a_unique_bucket_name --region us-west-2 --creat
 ``` 
 *Note: The bucket name must be unique and you can change your region.*
 
-Now copy the name you just gave the bucket and put it to bucket feature in the file `backend.tf`.
+Now copy the name you just gave the bucket and put it to bucket feature in the file `backend.tf`. Don't forget to give the region name you created the S3 bucket in to the feeature `region` in the same file.
+
+Now remember, the very first command that we need to run to initialize the backend is Terraform init. So let's go ahead and do that.
+
+Now let's go ahead and use Terraform format to make sure that our code is beautiful and consistent.
+
+And we have successfully configured our S3 backend.
+Now moving into the future, whenever you run Terraform apply, it's going to upload the state file to the S3 bucket.
+And even if you lose your system or something goes bad, you'll still be able to get your state file and continue on with the project, knowing what the last state of your project was.
