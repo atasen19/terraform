@@ -82,6 +82,7 @@ or change the behavior by passing an optional flag so that you're not prompted.
 
 
 ## Terraform Backends
+
 Terraform backends basically determine how the state is stored.
 You can either store it locally or remotely in a solution such as AWS S3. By default, the state is stored on your local disk. However, that behavior can be changed. It can be changed via passing the backend configuration to a Terraform block in your Terraform project code.
 However, one thing to note is that variables **cannot** be used
@@ -102,4 +103,15 @@ Now let's go ahead and use Terraform format to make sure that our code is beauti
 
 And we have successfully configured our S3 backend.
 Now moving into the future, whenever you run Terraform apply, it's going to upload the state file to the S3 bucket.
-And even if you lose your system or something goes bad, you'll still be able to get your state file and continue on with the project, knowing what the last state of your project was.
+And even if we lose your system or something goes bad, we'll still be able to get our state file and continue on with the project, knowing what the last state of our project was.
+
+
+## Setting Up Multiple AWS Providers in Terraform
+
+In the context of this project, we'll be setting up multiple providers as we need to deploy a distributed **multi-region CI/CD pipeline**.
+Providers are the building blocks of Terraform. They provide the source code for all Terraform resources and they can carry out interactions with the vendor APIs such as AWS and Azure.
+They also provide logic for managing, updating, and creating resources in Terraform.
+
+So inside the Terraform project folder, the very first thing we'll do is to create a couple of variables which we'll then plug into our providers. So let's create a file called variables.tf like in this repository. We'll create 2 separate variables for the different regions in which we'll be deploying.
+
+Remember with any changes to modules or providers, we always need to run `terraform init`. It also initializes the S3 backend as well as downloading any modules or providers that we have specified in our code. So let's go ahead and run terraform init.
