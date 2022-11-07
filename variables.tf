@@ -1,4 +1,4 @@
-# For more variable types please visit [here](https://developer.hashicorp.com/terraform/language/expressions/types)
+# For more variable types please visit: https://developer.hashicorp.com/terraform/language/expressions/types
 variable "instance_name" {
   description = "Value of the Name tag for the EC2 instance"
   type        = string

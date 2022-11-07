@@ -50,9 +50,9 @@ module "vpc" {
   tags = var.resource_tags
 }
 
-# For detailed information please visit [here](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest/submodules/web)
+# For detailed information please visit: https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest/submodules/web
 module "app_security_group" {
-  source = "terraform-aws-modules/security-groups/aws//modules/web"
+  source = "terraform-aws-modules/security-group/aws/modules/web"
   version = "4.16.0"
 
   name = "web-sg-my-test-project"
@@ -64,7 +64,7 @@ module "app_security_group" {
   tags = var.resource_tags
 }
 
-# For detailed information please visit [here](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest/submodules/web)
+# For detailed information please visit: https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest/submodules/web
 module "lb_security_group" {
   source  = "terraform-aws-modules/security-group/aws/modules/web"
   version = "4.16.0"
@@ -83,7 +83,7 @@ resource "random_string" "lb_id" {
   special = false
 }
 
-# For detailed inputs and outputs please visit [here](https://registry.terraform.io/modules/terraform-aws-modules/elb/aws/latest)
+# For detailed inputs and outputs please visit: https://registry.terraform.io/modules/terraform-aws-modules/elb/aws/latest
 module "elb_http" {
   source = "terraform-aws-modules/elb/aws"
   version = "3.0.1"
@@ -93,7 +93,7 @@ module "elb_http" {
 
   internal = false
 
-  # Detailed output parameters [here](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest/submodules/web#outputs)
+  # For detailed  output parameters please visit: https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest/submodules/web#outputs
   security_groups = [module.lb_security_group.this.security_group_id]
   subnets = module.vpc.public_subnets
 
